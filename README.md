@@ -1,3 +1,155 @@
+# SudokuGame (React Native)
+
+Detected React Native version: 0.80.0
+
+Overview
+--------
+`SudokuGame` is a React Native mobile app (Android & iOS) implementing a Sudoku game. This README covers project structure, how to install or change the React Native version, setup steps for macOS, and how to run/test the app.
+
+Quick Commands
+--------------
+Start Metro, then run on Android or iOS:
+
+```bash
+yarn start
+yarn android   # or: npx react-native run-android
+yarn ios       # or: npx react-native run-ios
+```
+
+Project Structure
+-----------------
+Top-level files and folders you will see in this project:
+
+- `App.js` / `App.tsx` — main app entry (check which exists)
+- `index.js` — registers the app with React Native
+- `package.json` — dependencies and scripts
+- `tsconfig.json` — TypeScript config (present if using TS)
+- `__tests__/` — Jest tests (unit/integration)
+- `android/` — Android native project (Gradle, manifests, builds)
+- `ios/` — iOS native project (Xcode project, Podfile)
+- `babel.config.js`, `metro.config.js`, `jest.config.js` — tooling configs
+
+How React Native version is determined
+------------------------------------
+This project currently declares React Native `0.80.0` in `package.json`.
+
+Install or change React Native version (existing project)
+------------------------------------------------------
+1. Update the dependency to the desired version and reinstall JS deps:
+
+```bash
+# Keep the repo's version (example):
+yarn add react-native@0.80.0
+
+# Or switch to another version (example):
+yarn add react-native@0.72.4
+
+# Reinstall native iOS pods after changing RN version (macOS):
+cd ios && pod install && cd ..
+```
+
+2. Verify the version in `package.json` and run the app.
+
+Create a new project with a specific React Native version
+-------------------------------------------------------
+If you want to create a fresh project with a specific RN version:
+
+```bash
+npx react-native init MyApp --version react-native@0.80.0
+```
+
+Notes about the CLI
+-------------------
+- Prefer `npx react-native` for CLI commands. Global `react-native-cli` is not required.
+- Useful commands:
+
+```bash
+npx react-native --version
+npx react-native info
+```
+
+macOS-specific setup (short)
+----------------------------
+- Install Node.js (>=18 as required by `package.json`) and Yarn or npm.
+- Install CocoaPods (for iOS): `sudo gem install cocoapods` or `brew install cocoapods`.
+- Install Watchman for better file watching: `brew install watchman`.
+- Install Xcode (for iOS) and Android Studio + Android SDK (for Android).
+
+Full setup and run steps
+------------------------
+1. Clone repository and install JS dependencies:
+
+```bash
+git clone <your-repo-url> SudokuGame
+cd SudokuGame
+yarn install
+```
+
+2. Install iOS pods (macOS only):
+
+```bash
+cd ios
+pod install
+cd ..
+```
+
+3. Start Metro bundler (in one terminal):
+
+```bash
+yarn start
+```
+
+4. Run on Android (separate terminal):
+
+```bash
+yarn android
+```
+
+5. Run on iOS (macOS, separate terminal):
+
+```bash
+yarn ios
+```
+
+Testing
+-------
+Run unit tests (Jest):
+
+```bash
+yarn test
+```
+
+Common tasks and troubleshooting
+--------------------------------
+- Clear Metro cache if you see bundling issues:
+
+```bash
+npx react-native start --reset-cache
+```
+
+- If iOS build fails after changing native dependencies:
+
+```bash
+cd ios
+pod install --repo-update
+open SudokuGame.xcworkspace
+# then clean & build from Xcode
+```
+
+- Ensure Android SDK and `ANDROID_HOME` (or `ANDROID_SDK_ROOT`) env vars are set correctly for Android builds.
+
+Contributing
+------------
+- Create a branch: `git checkout -b feature/your-feature`.
+- Open a pull request with a clear description and testing steps.
+
+Next steps I can do for you
+---------------------------
+- Add screenshots and icons to this README
+- Add example `CODE_OF_CONDUCT` and `CONTRIBUTING.md`
+- Add a GitHub Actions workflow to run `yarn test` on push
+
+File: [README.md](README.md)
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
